@@ -57,7 +57,7 @@ deploy:
   file:
   - build/electrum-xgox/dist/electrum-xgox-$ELECTRUM_XGOX_VERSION-macosx.dmg
   on:
-    repo: ddude1/electrum-xgox
+    repo: ddude1/TestLite
     tags: true
     condition: "$TRAVIS_OS_NAME = osx"
 - provider: releases
@@ -69,7 +69,7 @@ deploy:
   - build/electrum-xgox/dist/electrum-xgox-$ELECTRUM_XGOX_VERSION-setup-win64.exe
   - build/electrum-xgox/bin/Electrum_XGOX-$ELECTRUM_XGOX_APK_VERSION-release-unsigned.apk
   on:
-    repo: ddude1/electrum-xgox
+    repo: ddude1/TestLite
     tags: true
     condition: "$TRAVIS_OS_NAME = linux"
 notifications:

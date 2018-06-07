@@ -21,4 +21,4 @@ sudo pip3 install SIP==4.19.8
 sudo pip3 install PyQt5==5.7.1
 sudo pip3 install Cython==0.28.1
 sudo pip3 install PyInstaller==3.3.1
-sudo pip3 install xevan_hash
+sudo pip3 install scrypt

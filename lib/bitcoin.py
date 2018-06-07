@@ -31,7 +31,7 @@ import json
 
 import ecdsa
 import pyaes
-import xevan_hash
+import scrypt
 
 from .util import bfh, bh2u, to_string
 from . import version
@@ -68,7 +68,7 @@ class NetworkConstants:
         cls.ADDRTYPE_P2PKH = 75
         cls.ADDRTYPE_P2SH = 18
         cls.HEADERS_URL = ''  # TODO headers bootstrap
-        cls.GENESIS = '000000e1febc39965b055e8e0117179a4d18e24e7aaa0c69864c4054b4f29445'
+        cls.GENESIS = '000008eef0757069abb9455e104b18411a49bc2d6c351f0a7371e4599def8bc2'
         cls.DEFAULT_PORTS = {'t': '50001', 's': '50002'}
         cls.DEFAULT_SERVERS = read_json_dict('servers.json')
         cls.DRKV_HEADER = 0x02fe52f8  # drkv
@@ -84,7 +84,7 @@ class NetworkConstants:
         cls.ADDRTYPE_P2PKH = 140
         cls.ADDRTYPE_P2SH = 19
         cls.HEADERS_URL = ''  # TODO headers bootstrap
-        cls.GENESIS = '000000e1febc39965b055e8e0117179a4d18e24e7aaa0c69864c4054b4f29445'
+        cls.GENESIS = '000008eef0757069abb9455e104b18411a49bc2d6c351f0a7371e4599def8bc2'
         cls.DEFAULT_PORTS = {'t':'51001', 's':'51002'}
         cls.DEFAULT_SERVERS = read_json_dict('servers_testnet.json')
         cls.DRKV_HEADER = 0x3a8061a0  # DRKV
@@ -247,7 +247,7 @@ def Hash(x):
 
 
 def PoWHash(x):
-    return xevan_hash.getPoWHash(to_bytes(x))
+    return scrypt.getPoWHash(to_bytes(x))
 
 
 hash_encode = lambda x: bh2u(x[::-1])
