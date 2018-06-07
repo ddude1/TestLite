@@ -137,8 +137,8 @@ class Commands:
     @command('wn')
     def restore(self, text):
         """Restore a wallet from text. Text can be a seed phrase, a master
-        public key, a master private key, a list of Xuez addresses
-        or Xuez private keys. If you want to be prompted for your
+        public key, a master private key, a list of Xgox addresses
+        or Xgox private keys. If you want to be prompted for your
         seed, type '?' or ':' (concealed) """
         raise BaseException('Not a JSON-RPC command')
 
@@ -494,7 +494,7 @@ class Commands:
 
     @command('w')
     def setlabel(self, key, label):
-        """Assign a label to an item. Item may be a Xuez address or a
+        """Assign a label to an item. Item may be a Xgox address or a
         transaction ID"""
         self.wallet.set_label(key, label)
 
@@ -859,8 +859,8 @@ class Commands:
 
 param_descriptions = {
     'privkey': 'Private key. Type \'?\' to get a prompt.',
-    'destination': 'Xuez address, contact or alias',
-    'address': 'Xuez address',
+    'destination': 'Xgox address, contact or alias',
+    'address': 'Xgox address',
     'seed': 'Seed phrase',
     'txid': 'Transaction ID',
     'pos': 'Position',
@@ -874,12 +874,12 @@ param_descriptions = {
     'requested_amount': 'Requested amount (in XGOX).',
     'outputs': 'list of ["address", amount]',
     'redeem_script': 'redeem script (hexadecimal)',
-    'conf_file': 'Masternode.conf file from Xuez.',
+    'conf_file': 'Masternode.conf file from Xgox.',
     'alias': 'Masternode alias.',
 }
 
 command_options = {
-    'broadcast':   (None, "Broadcast the transaction to the Xuez network"),
+    'broadcast':   (None, "Broadcast the transaction to the Xgox network"),
     'password':    ("-W", "Password"),
     'new_password':(None, "New Password"),
     'receiving':   (None, "Show only receiving addresses"),
@@ -891,7 +891,7 @@ command_options = {
     'labels':      ("-l", "Show the labels of listed addresses"),
     'nocheck':     (None, "Do not verify aliases"),
     'imax':        (None, "Maximum number of inputs"),
-    'fee':         ("-f", "Transaction fee (in Xuez)"),
+    'fee':         ("-f", "Transaction fee (in Xgox)"),
     'from_addr':   ("-F", "Source address (must be a wallet address; use sweep to spend from non-wallet address)."),
     'change_addr': ("-c", "Change address. Default is a spare address, or the source address if it's not in the wallet"),
     'nbits':       (None, "Number of bits of entropy"),

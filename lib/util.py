@@ -440,7 +440,7 @@ mainnet_block_explorers = {
 }
 
 testnet_block_explorers = {
-    'Xuez.org': ('https://test.insight.xgox.siampm.com',
+    'Xgox.org': ('https://test.insight.xgox.siampm.com',
                        {'tx': 'tx', 'addr': 'address'}),
     'system default': ('blockchain:',
                        {'tx': 'tx', 'addr': 'address'}),
@@ -476,12 +476,12 @@ def parse_URI(uri, on_pr=None):
 
     if ':' not in uri:
         if not bitcoin.is_address(uri):
-            raise BaseException("Not a Xuez address")
+            raise BaseException("Not a Xgox address")
         return {'address': uri}
 
     u = urllib.parse.urlparse(uri)
     if u.scheme != 'xgox':
-        raise BaseException("Not a Xuez URI")
+        raise BaseException("Not a Xgox URI")
     address = u.path
 
     # python for android fails to parse query
@@ -498,7 +498,7 @@ def parse_URI(uri, on_pr=None):
     out = {k: v[0] for k, v in pq.items()}
     if address:
         if not bitcoin.is_address(address):
-            raise BaseException("Invalid Xuez address:" + address)
+            raise BaseException("Invalid Xgox address:" + address)
         out['address'] = address
     if 'amount' in out:
         am = out['amount']

@@ -80,10 +80,10 @@ setup(
     },
     scripts=['electrum-xgox'],
     data_files=data_files,
-    description="Lightweight Xuez Wallet",
+    description="Lightweight Xgox Wallet",
     maintainer="ddude",
     maintainer_email="ddude@ddude.com",
     license="MIT License",
     url="https://xgoxcoin.com",
-    long_description="""Lightweight Xuez Wallet"""
+    long_description="""Lightweight Xgox Wallet"""
 )

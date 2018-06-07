@@ -1,4 +1,4 @@
-"""Xuez look and feel."""
+"""Xgox look and feel."""
 
 xgox_stylesheet = """
 

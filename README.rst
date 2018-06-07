@@ -1,4 +1,4 @@
-Electrum-XGOX - Lightweight Xuezpay client
+Electrum-XGOX - Lightweight Xgoxpay client
 =====================================
 
 ::

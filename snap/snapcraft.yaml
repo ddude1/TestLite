@@ -1,8 +1,8 @@
 name: electrum-xgox
 version: master
-summary: Xuezpay thin client
+summary: Xgoxpay thin client
 description: |
-  Lightweight Xuezpay client
+  Lightweight Xgoxpay client
 
 grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: strict

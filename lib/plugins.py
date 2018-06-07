@@ -443,7 +443,7 @@ class DeviceMgr(ThreadJob, PrintError):
         # or it is not pairable
         raise DeviceUnpairableError(
             _('Electrum-XGOX cannot pair with your %s.\n\n'
-              'Before you request Xuez coins to be sent to addresses in this '
+              'Before you request Xgox coins to be sent to addresses in this '
               'wallet, ensure you can pair with your device, or that you have '
               'its seed (and passphrase, if any).  Otherwise all coins you '
               'receive will be unspendable.') % plugin.device)
