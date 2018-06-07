@@ -1,0 +1,24 @@
+#!/usr/bin/make -f
+
+export PYBUILD_NAME=electrum-xgox
+
+%:
+	dh $@ --with python3 --buildsystem=pybuild
+
+override_dh_installchangelogs::
+	dh_installchangelogs -k RELEASE-NOTES
+
+override_dh_auto_build::
+	pyrcc5 icons.qrc -o gui/qt/icons_rc.py
+	dh_auto_build
+
+override_dh_auto_install::
+	dh_auto_install
+	mkdir -p debian/electrum-xgox/usr/bin \
+             debian/electrum-xgox/usr/share
+	mv debian/python3-electrum-xgox/usr/bin \
+       debian/electrum-xgox/usr
+	mv debian/python3-electrum-xgox/usr/share/applications \
+       debian/electrum-xgox/usr/share
+	mv debian/python3-electrum-xgox/usr/share/pixmaps \
+       debian/electrum-xgox/usr/share

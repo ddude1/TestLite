@@ -1,0 +1,17 @@
+# If you want electrum-xgox to appear in a linux app launcher ("start menu"), install this by doing:
+# sudo desktop-file-install electrum_xgox.desktop
+
+[Desktop Entry]
+Comment=Lightweight Xgox Client
+Exec=electrum-xgox %u
+GenericName[en_US]=Electrum-XGOX
+GenericName=Electrum-XGOX
+Icon=electrum-xgox
+Name[en_US]=Electrum Xgox Wallet
+Name=Electrum Xgox Wallet
+Categories=Network;
+StartupNotify=false
+Terminal=false
+Type=Application
+MimeType=x-scheme-handler/xgoxpay;
+

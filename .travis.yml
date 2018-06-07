@@ -1,0 +1,77 @@
+sudo: required
+language: python
+services:
+- docker
+addons:
+  apt:
+    packages:
+    - libusb-1.0-0-dev
+    - libudev-dev
+matrix:
+  include:
+  - if: tag =~ .+
+    os: osx
+    language: ruby
+    osx_image: xcode7.3
+  - os: linux
+    python: "3.4"
+  - os: linux
+    python: "3.5"
+  - if: NOT tag =~ .+
+    os: linux
+    python: "3.6"
+before_install:
+- source contrib/travis/electrum_xgox_version_env.sh
+- echo electrum-xgox version is $ELECTRUM_XGOX_VERSION
+- mkdir -p build && cp contrib/travis/* ./build/
+- if [[ -n $TRAVIS_TAG ]] && [[ $TRAVIS_OS_NAME == 'osx' ]]; then
+      ./build/before_install-osx.sh;
+  fi
+- if [[ -n $TRAVIS_TAG ]] && [[ $TRAVIS_OS_NAME == 'linux' ]] && [[ $TRAVIS_PYTHON_VERSION == '3.4' ]]; then
+      ./build/before_install-linux.sh;
+  fi
+- if [[ -n $TRAVIS_TAG ]] && [[ $TRAVIS_OS_NAME == 'linux' ]] && [[ $TRAVIS_PYTHON_VERSION == '3.5' ]]; then
+      ./build/before_install-linux-apk.sh;
+  fi
+install:
+- if [[ -z $TRAVIS_TAG ]] && [[ $TRAVIS_OS_NAME == 'linux' ]]; then
+      pip install tox; pip install tox-travis;
+  fi
+script:
+- if [[ -z $TRAVIS_TAG ]] && [[ $TRAVIS_OS_NAME == 'linux' ]];then
+      tox;
+  fi
+- if [[ -n $TRAVIS_TAG ]] && [[ $TRAVIS_OS_NAME == 'osx' ]]; then
+      ./build/travis-build-osx.sh ;
+  fi
+- if [[ -n $TRAVIS_TAG ]] && [[ $TRAVIS_OS_NAME == 'linux' ]] && [[ $TRAVIS_PYTHON_VERSION == '3.4' ]]; then
+      ./build/travis-build-linux.sh;
+  fi
+- if [[ -n $TRAVIS_TAG ]] && [[ $TRAVIS_OS_NAME == 'linux' ]] && [[ $TRAVIS_PYTHON_VERSION == '3.5' ]]; then
+      ./build/travis-build-linux-apk.sh;
+  fi
+deploy:
+- provider: releases
+  api_key:
+    secure: Uy/RJD0fGRWtZsgID4R7BGHLpAjlBqd4IBIfcNwarPhHTRkOD9mRNL1/9H7Cs90tNML15rso5AaKyz54rxBfLvlRh82IbAZ/qNJguBweJDO3Efe0L8MGX+BVSfmJwAULIqHrPJOsFTWA5pxeaphuCU+vPpnfW9WmB2MGHUSUW1SI5eFL4LVC2nchTByNOgTfKV2hTaov0glBTdkY8IyExkzEmE4qWhuCGNBZKPGqkkBVd0vsCH9vDU1uNcBLf11JnRrP4UvQisXA2rAcl2zxBykRJCrJZN8Z9NwG1G4zBf3cnPq4bYxrU0p9hiuv/WZhAO2bmb9dfADjKqTwhc7JteqLAPZ1NT5PXd+vyYC+5rkslz/TxEZUSPBGbXGB4t0f2YHXsEUP4o1vMY9a+3YIciRcA8AbwWED8chJwlI7hKOrpVBQPUoHBXbT4lbKzDzO0T/EEJqPlQCt+VhGhsKOB05OSXA3wuRSMzhgHvpMwNzA70k2cIl+HYy97IzUS3cCzuq2jqdGGeabgezAnhKZgMoJ1XBkaIcdjSCkGu6yfGAi79KcQb/suyIFlbOkeGzBWKhsVORF4AfjVGg+aKA+Y31YYrSOOYeMngcc417VNnohF7AGuVcf2m+H4lCKhkSKq7Df/h5V2xUmsZLs2Evr3fZKgwnL8VTOFSIRSWiWPWY=
+  file:
+  - build/electrum-xgox/dist/electrum-xgox-$ELECTRUM_XGOX_VERSION-macosx.dmg
+  on:
+    repo: ddude1/electrum-xgox
+    tags: true
+    condition: "$TRAVIS_OS_NAME = osx"
+- provider: releases
+  api_key:
+    secure: Uy/RJD0fGRWtZsgID4R7BGHLpAjlBqd4IBIfcNwarPhHTRkOD9mRNL1/9H7Cs90tNML15rso5AaKyz54rxBfLvlRh82IbAZ/qNJguBweJDO3Efe0L8MGX+BVSfmJwAULIqHrPJOsFTWA5pxeaphuCU+vPpnfW9WmB2MGHUSUW1SI5eFL4LVC2nchTByNOgTfKV2hTaov0glBTdkY8IyExkzEmE4qWhuCGNBZKPGqkkBVd0vsCH9vDU1uNcBLf11JnRrP4UvQisXA2rAcl2zxBykRJCrJZN8Z9NwG1G4zBf3cnPq4bYxrU0p9hiuv/WZhAO2bmb9dfADjKqTwhc7JteqLAPZ1NT5PXd+vyYC+5rkslz/TxEZUSPBGbXGB4t0f2YHXsEUP4o1vMY9a+3YIciRcA8AbwWED8chJwlI7hKOrpVBQPUoHBXbT4lbKzDzO0T/EEJqPlQCt+VhGhsKOB05OSXA3wuRSMzhgHvpMwNzA70k2cIl+HYy97IzUS3cCzuq2jqdGGeabgezAnhKZgMoJ1XBkaIcdjSCkGu6yfGAi79KcQb/suyIFlbOkeGzBWKhsVORF4AfjVGg+aKA+Y31YYrSOOYeMngcc417VNnohF7AGuVcf2m+H4lCKhkSKq7Df/h5V2xUmsZLs2Evr3fZKgwnL8VTOFSIRSWiWPWY=
+  file:
+  - build/electrum-xgox/dist/Electrum-XGOX-$ELECTRUM_XGOX_VERSION.tar.gz
+  - build/electrum-xgox/dist/electrum-xgox-$ELECTRUM_XGOX_VERSION-setup-win32.exe
+  - build/electrum-xgox/dist/electrum-xgox-$ELECTRUM_XGOX_VERSION-setup-win64.exe
+  - build/electrum-xgox/bin/Electrum_XGOX-$ELECTRUM_XGOX_APK_VERSION-release-unsigned.apk
+  on:
+    repo: ddude1/electrum-xgox
+    tags: true
+    condition: "$TRAVIS_OS_NAME = linux"
+notifications:
+  slack:
+    secure: /9G2O/Qi8tFxcFmM8n6JQGfD9ojOQF8fPYcHM9gsOgNU9J2PfV3RnRtv3VZogxs4azKG2M8JhD/lwqZBNi4FgdllW6NE7+5TB2KX07xy/zx0m81u8k6J228sAuiRsUBcpmW7pqlqLIENMzwV8pDcA93Ps0EWJKWbzRi+hIEkBnaFE9WHY0GcKuW0TCrnonZ4FOnJNO/G9HzxvQ97bcJDvhUloJ2pBBsH0P4IZ1RlDXFpc5DqTT2qxZSo=
