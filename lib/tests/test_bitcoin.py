@@ -154,7 +154,7 @@ class Test_bitcoin(unittest.TestCase):
         self.assertEqual(address_to_script('GWJCHdaZFn8Jz14n6nbE5f7kcBTR7LDDcX'), '76a91488999299c6164054793522f5b8a0d312f3e5d27288ac')
 
         # base58 P2SH
-        self.assertEqual(address_to_script('bVFFc3ivKkH53swKo76aS8qggzFkrA5Ty6'), 'a914a6bc1aa409ab5f2e895aa28f3cadb30dc623728e87')
+        self.assertEqual(address_to_script('bVFFc3ivKkH53swKo76aS8qggzFkrA5Ty6'), 'a914b52d95009d90c4485dddde8317bf31b035c5131c87')
         self.assertEqual(address_to_script('bGTSofKbsw1AtZWQAS3VMGM4mk1biTiZ9n'), 'a914ab41915b8462a3a12e1d7a2b8fd84c06ddeb9dfb87')
 
 
@@ -324,13 +324,13 @@ class Test_keyImport(unittest.TestCase):
             'addr_encoding': 'base58',
             'scripthash': 'd396310525f73c48da69dd2d5bd2a18123f5eb8c814f113d53b6f384884e27e8'},
            {'priv': 'Rc6WAao84gE1JpEidxxKhD9dMW1f658z4Q1dXz555c1iN92EXGTm',
-            'pub': '03fa334250ddb2a51b30b31a98922a5e1c107042a482b68fc74999c6962ae3276e',
+            'pub': '03a9d1f6a17f1ca3ead514c33fe7c8cf1218d5d5e31c2678483f906e1a4bc77ce8',
             'address': 'GWJCHdaZFn8Jz14n6nbE5f7kcBTR7LDDcX', #compressed XMy7W6qnXjKQzjKCD4JpkNBccMXwqQdGjn
             'minikey': False,
             'txin_type': 'p2pkh',
             'compressed': True,
             'addr_encoding': 'base58',
-            'scripthash': '722ac34d1d99241e7ff7aabbb27dcc1cde381c1bfce272683160c38bc798e5b5'}, #76a914747a19c67e086c3426821cd4bfd011e44e5a8e8788ac
+            'scripthash': '25911d7686a3f7b3bd160bb9b5ea4f24297662c6d5959568cbd20c30545af541'}, #76a914747a19c67e086c3426821cd4bfd011e44e5a8e8788ac
            # from http://bitscan.com/articles/security/spotlight-on-mini-private-keys
          
     )
