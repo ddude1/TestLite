@@ -64,9 +64,9 @@ class NetworkConstants:
     @classmethod
     def set_mainnet(cls):
         cls.TESTNET = False
-        cls.WIF_PREFIX = 212
-        cls.ADDRTYPE_P2PKH = 75
-        cls.ADDRTYPE_P2SH = 18
+        cls.WIF_PREFIX = 166
+        cls.ADDRTYPE_P2PKH = 38
+        cls.ADDRTYPE_P2SH = 85
         cls.HEADERS_URL = ''  # TODO headers bootstrap
         cls.GENESIS = '000008eef0757069abb9455e104b18411a49bc2d6c351f0a7371e4599def8bc2'
         cls.DEFAULT_PORTS = {'t': '50001', 's': '50002'}
@@ -80,9 +80,9 @@ class NetworkConstants:
     @classmethod
     def set_testnet(cls):
         cls.TESTNET = True
-        cls.WIF_PREFIX = 239
-        cls.ADDRTYPE_P2PKH = 140
-        cls.ADDRTYPE_P2SH = 19
+        cls.WIF_PREFIX = 166
+        cls.ADDRTYPE_P2PKH = 111
+        cls.ADDRTYPE_P2SH = 196
         cls.HEADERS_URL = ''  # TODO headers bootstrap
         cls.GENESIS = '000008eef0757069abb9455e104b18411a49bc2d6c351f0a7371e4599def8bc2'
         cls.DEFAULT_PORTS = {'t':'51001', 's':'51002'}
