@@ -155,7 +155,7 @@ class Test_bitcoin(unittest.TestCase):
 
         # base58 P2SH
         self.assertEqual(address_to_script('bVFFc3ivKkH53swKo76aS8qggzFkrA5Ty6'), 'a914b52d95009d90c4485dddde8317bf31b035c5131c87')
-        self.assertEqual(address_to_script('bGTSofKbsw1AtZWQAS3VMGM4mk1biTiZ9n'), 'a914ab41915b8462a3a12e1d7a2b8fd84c06ddeb9dfb87')
+        self.assertEqual(address_to_script('bGTSofKbsw1AtZWQAS3VMGM4mk1biTiZ9n'), 'a91428e249b28416bf909d7b52537b4f8785c9fb505b87')
 
 
 """class Test_bitcoin_testnet(unittest.TestCase):
