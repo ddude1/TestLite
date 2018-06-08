@@ -151,7 +151,7 @@ class Test_bitcoin(unittest.TestCase):
     def test_address_to_script(self):
         # base58 P2PKH
         self.assertEqual(address_to_script('GYastr1RxW8Pjcn1Y8jQCZd65wcGVAf8Xb'), '76a914a1b18ac00db95bcc53b9fdf1dbaa97f1fe7e305588ac')
-        self.assertEqual(address_to_script('GWJCHdaZFn8Jz14n6nbE5f7kcBTR7LDDcX'), '76a914747a19c67e086c3426821cd4bfd011e44e5a8e8788ac')
+        self.assertEqual(address_to_script('GWJCHdaZFn8Jz14n6nbE5f7kcBTR7LDDcX'), '76a91488999299c6164054793522f5b8a0d312f3e5d27288ac')
 
         # base58 P2SH
         self.assertEqual(address_to_script('8WHUEVtMDLeereT5r4ZoNKjr3MXr4gqfon'), 'a914a6bc1aa409ab5f2e895aa28f3cadb30dc623728e87')
@@ -316,7 +316,7 @@ class Test_keyImport(unittest.TestCase):
 
     priv_pub_addr = (
            {'priv': 'Rfd29FLmJPm3UrAwuvTNSnLFuXokukh1DkoQWAePpsX7LbvDnUgc',
-            'pub': '02c59b76fabcfc146c75365da6475f33d8fa596ef76b4b301d66da74180c429c78',
+            'pub': '03f9cf5d6f46e9b5424392543056a82a43c990d06823933fc9998b70186c8f9572',
             'address': 'GYastr1RxW8Pjcn1Y8jQCZd65wcGVAf8Xb',
             'minikey' : False,
             'txin_type': 'p2pkh',
@@ -332,14 +332,7 @@ class Test_keyImport(unittest.TestCase):
             'addr_encoding': 'base58',
             'scripthash': '722ac34d1d99241e7ff7aabbb27dcc1cde381c1bfce272683160c38bc798e5b5'}, #76a914747a19c67e086c3426821cd4bfd011e44e5a8e8788ac
            # from http://bitscan.com/articles/security/spotlight-on-mini-private-keys
-           {'priv': 'SzavMBLoXU6kDrqtUVmffv',
-            'pub': '02588d202afcc1ee4ab5254c7847ec25b9a135bbda0f2bc69ee1a714749fd77dc9',
-            'address': 'XKd9mNGxc1JrGLaZmv643LCvuBwpeKJjuA',
-            'minikey': True,
-            'txin_type': 'p2pkh',
-            'compressed': True,  # this is actually ambiguous... issue #2748
-            'addr_encoding': 'base58',
-            'scripthash': '60ad5a8b922f758cd7884403e90ee7e6f093f8d21a0ff24c9a865e695ccefdf1'},
+         
     )
 
     def test_public_key_from_private_key(self):

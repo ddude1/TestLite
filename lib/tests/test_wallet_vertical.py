@@ -90,7 +90,7 @@ class TestWalletKeystoreAddressIntegrity(unittest.TestCase):
 
         w = self._create_standard_wallet(ks)
 
-        self.assertEqual(w.get_receiving_addresses()[0], 'XH5M4z6eofyLo8eP85BPhynRAygD62RkrT')
+        self.assertEqual(w.get_receiving_addresses()[0], 'GPa2dy4zXzpvY6VBDYrbmLiJtK9JkXMbfm')
         self.assertEqual(w.get_change_addresses()[0], 'XScKSe17vhZns1ZoAfocF3R4cQWpAM38fd')
 
     @mock.patch.object(storage.WalletStorage, '_write')
