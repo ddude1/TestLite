@@ -45,7 +45,7 @@ setup(
         'dnspython',
         'jsonrpclib-pelix',
         'PySocks>=1.6.6',
-        'scrypt',
+        'litecoin_scrypt',
     ],
     packages=[
         'electrum_xgox',

@@ -31,7 +31,7 @@ import json
 
 import ecdsa
 import pyaes
-import scrypt
+import litecoin_scrypt
 
 from .util import bfh, bh2u, to_string
 from . import version
@@ -247,7 +247,7 @@ def Hash(x):
 
 
 def PoWHash(x):
-    return scrypt.getPoWHash(to_bytes(x))
+    return litecoin_scrypt.getPoWHash(to_bytes(x))
 
 
 hash_encode = lambda x: bh2u(x[::-1])

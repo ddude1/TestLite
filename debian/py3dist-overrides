@@ -7,4 +7,4 @@ protobuf python3-protobuf (>= 3.0.0)
 dnspython python3-dnspython (>= 1.11.1)
 jsonrpclib-pelix python3-jsonrpclib-pelix (>= 0.3.1)
 PySocks python3-socks (>= 1.6.5)
-scrypt python3-scrypt
+litecoin_scrypt python3-litecoin_scrypt

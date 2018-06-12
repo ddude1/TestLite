@@ -21,7 +21,7 @@ echo wine build version is $ELECTRUM_XGOX_VERSION
 
 sudo pip3 install -r contrib/requirements.txt
 sudo pip3 install \
-    scrypt \
+    litecoin_scrypt \
     btchip-python==0.1.24 \
     keepkey==4.0.2 \
     trezor==0.7.16

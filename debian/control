@@ -17,7 +17,7 @@ Build-Depends:
  python3-dnspython (>= 1.11.1),
  python3-jsonrpclib-pelix (>= 0.3.1),
  python3-socks (>= 1.6.5),
- python3-scrypt,
+ python3-litecoin_scrypt,
 Standards-Version: 4.1.3
 Homepage: http://xgoxcoin.com/
 X-Python3-Version: >= 3.4

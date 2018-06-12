@@ -26,6 +26,7 @@ import threading
 from . import util
 from . import bitcoin
 from .bitcoin import *
+import litecoin_scrypt
 
 
 target_timespan = 24 * 60 * 60 # Xgox: 1 day
