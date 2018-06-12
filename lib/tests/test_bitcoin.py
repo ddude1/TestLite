@@ -65,11 +65,11 @@ class Test_bitcoin(unittest.TestCase):
             return key.sign_message(msg, compressed)
 
         sig1 = sign_message_with_wif_privkey(
-            'YV56icVrjNioXn9kpZeL3DvtC7aN7kt8tr5ur2wqpMaXeJ3YQirG', msg1)
-        addr1 = 'XJtSNWxWufU5XAh59JfXPx9peodJwTqPqf'
+            'Rfd29FLmJPm3UrAwuvTNSnLFuXokukh1DkoQWAePpsX7LbvDnUgc', msg1)
+        addr1 = 'GYastr1RxW8Pjcn1Y8jQCZd65wcGVAf8Xb'
         sig2 = sign_message_with_wif_privkey(
-            'YQ6GbE34bXDgMgJEEJ87Buri6MCCcCNZoozpc34ima1PBjKqA8fj', msg2)
-        addr2 = 'XMy7W6qnXjKQzjKCD4JpkNBccMXwqQdGjn'
+            'Rc6WAao84gE1JpEidxxKhD9dMW1f658z4Q1dXz555c1iN92EXGTm', msg2)
+        addr2 = 'GWJCHdaZFn8Jz14n6nbE5f7kcBTR7LDDcX'
 
         sig1_b64 = base64.b64encode(sig1)
         sig2_b64 = base64.b64encode(sig2)
