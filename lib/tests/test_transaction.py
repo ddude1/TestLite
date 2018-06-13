@@ -76,7 +76,10 @@ class TestTransaction(unittest.TestCase):
                 'version': 1
         }
         tx = transaction.Transaction(unsigned_blob)
-        self.assertEqual(tx.deserialize(), expected)
+        dstx = tx.deserialize()
+        print(dstx)
+        #self.assertEqual(tx.deserialize(), expected)
+        self.assertEqual(dstx, expected)
         self.assertEqual(tx.deserialize(), None)
 
         self.assertEqual(tx.as_dict(), {'hex': unsigned_blob, 'complete': False, 'final': True})
