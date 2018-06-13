@@ -444,6 +444,7 @@ def deserialize(raw):
     d = {}
     start = vds.read_cursor
     d['version'] = vds.read_int32()
+    d['time'] = vds.read_int32()
     n_vin = vds.read_compact_size()
     d['inputs'] = [parse_input(vds) for i in range(n_vin)]
     n_vout = vds.read_compact_size()
@@ -553,6 +554,7 @@ class Transaction:
             return
         d = deserialize(self.raw)
         self._inputs = d['inputs']
+        self.time = d['time']
         self._outputs = [(x['type'], x['address'], x['value']) for x in d['outputs']]
         self.locktime = d['lockTime']
         self.version = d['version']
@@ -699,23 +701,25 @@ class Transaction:
         nVersion = int_to_hex(self.version, 4)
         nHashType = int_to_hex(1, 4)
         nLocktime = int_to_hex(self.locktime, 4)
+        nTime = int_to_hex(self.time, 4)
         inputs = self.inputs()
         outputs = self.outputs()
         txin = inputs[i]
         # TODO: py3 hex
         txins = var_int(len(inputs)) + ''.join(self.serialize_input(txin, self.get_preimage_script(txin) if i==k else '') for k, txin in enumerate(inputs))
         txouts = var_int(len(outputs)) + ''.join(self.serialize_output(o) for o in outputs)
-        preimage = nVersion + txins + txouts + nLocktime + nHashType
+        preimage = nVersion + nTime + txins + txouts + nLocktime + nHashType
         return preimage
 
     def serialize(self, estimate_size=False):
         nVersion = int_to_hex(self.version, 4)
         nLocktime = int_to_hex(self.locktime, 4)
+        nTime = int_to_hex(self.time, 4)
         inputs = self.inputs()
         outputs = self.outputs()
         txins = var_int(len(inputs)) + ''.join(self.serialize_input(txin, self.input_script(txin, estimate_size)) for txin in inputs)
         txouts = var_int(len(outputs)) + ''.join(self.serialize_output(o) for o in outputs)
-        return nVersion + txins + txouts + nLocktime
+        return nVersion + nTime + txins + txouts + nLocktime
 
     def hash(self):
         print("warning: deprecated tx.hash()")
